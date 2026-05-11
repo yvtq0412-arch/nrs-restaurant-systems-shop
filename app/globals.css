@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-bone text-ink;
+    font-feature-settings: 'palt';
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-ink text-bone tracking-wider uppercase text-sm font-medium hover:opacity-80 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-ink text-ink tracking-wider uppercase text-sm font-medium hover:bg-ink hover:text-bone transition-colors;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 border border-ink/20 bg-white focus:outline-none focus:border-ink transition-colors;
+  }
+  .label-field {
+    @apply block text-xs uppercase tracking-widest text-ink/70 mb-2;
+  }
+}
