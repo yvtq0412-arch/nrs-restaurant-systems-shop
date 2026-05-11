@@ -36,7 +36,7 @@ async function getProduct(id: string): Promise<Product | null> {
 
   try {
     const doc = await adminDb().collection('products').doc(id).get();
-    if (doc.exists) return { id: doc.id, ...doc.data() } as Product;
+    if (doc.exists) return { ...doc.data(), id: doc.id } as Product;
   } catch {}
 
   return samples[id] ?? null;

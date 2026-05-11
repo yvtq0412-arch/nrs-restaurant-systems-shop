@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
   const orders: (Order & { id: string })[] = [];
   for (const id of orderIds) {
     const doc = await adminDb().collection('orders').doc(id).get();
-    if (doc.exists) orders.push({ id: doc.id, ...(doc.data() as Order) });
+    if (doc.exists) orders.push({ ...(doc.data() as Order), id: doc.id });
   }
 
   if (orders.length === 0) {

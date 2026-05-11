@@ -11,7 +11,7 @@ export default function AdminProductsPage() {
 
   useEffect(() => {
     return onSnapshot(collection(db, 'products'), (snap) => {
-      setProducts(snap.docs.map((d) => ({ id: d.id, ...d.data() } as Product)));
+      setProducts(snap.docs.map((d) => ({ ...d.data(), id: d.id } as Product)));
     });
   }, []);
 

@@ -7,7 +7,7 @@ export const revalidate = 60; // 1分ごとに最新の商品を取得
 async function getProducts(): Promise<Product[]> {
   try {
     const snap = await adminDb().collection('products').where('available', '==', true).get();
-    return snap.docs.map((d) => ({ id: d.id, ...d.data() } as Product));
+    return snap.docs.map((d) => ({ ...d.data(), id: d.id } as Product));
   } catch (e) {
     // Firebase 未設定時はサンプルを返す（最初のデプロイで真っ白にならないように）
     return [

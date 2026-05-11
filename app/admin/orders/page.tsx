@@ -22,7 +22,7 @@ export default function AdminOrdersPage() {
   useEffect(() => {
     const q = query(collection(db, 'orders'), orderBy('createdAt', 'desc'));
     return onSnapshot(q, (snap) => {
-      setOrders(snap.docs.map((d) => ({ id: d.id, ...d.data() } as any)));
+      setOrders(snap.docs.map((d) => ({ ...d.data(), id: d.id } as any)));
     });
   }, []);
 
